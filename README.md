@@ -1,0 +1,106 @@
+
+# Formaciones Spring
+
+- Introducción a Spring Framework
+- Tu primera aplicación web con Spring Boot
+- Introducción a Spring Data JPA
+- Tu primera API Rest con Spring Boot
+- Introducción a Spring Security
+- Implementa la gestión de errores en tu aplicación web con Spring Boot
+- Validación de datos en tu aplicación web con Spring Boot
+- Paginación de resultados en tu aplicación web con Spring Boot
+- Paginación de resultados en tu API REST con Spring Boot
+- Documenta tu API REST con Open API 3.0
+- Testing unitario de tu aplicación con Spring Boot, Junit y Mockito
+- Consultas básicas con Spring Data JPA
+- Modelos de datos con asociaciones con Spring Data JPA
+- Crea un CRUD con Spring Boot, Spring Data JPA y Thymeleaf
+- Introducción a Spring Data Redis
+- Introducción a Spring Data MongoDB
+- Consultas con Spring Data MongoDB
+- Implementa timeout en las peticiones de tu API REST
+- Introducción a Spring WebFlux
+- Introducción a Spring WebFlux con Kotlin
+- Crea una aplicación web reactiva con Spring WebFlux y Thymeleaf
+- Spring vs. Spring Boot vs. Spring MVC
+- Introducción a la programación dirigida por eventos con Spring
+- Desarrolla una aplicación con Spring Boot y Angular
+- Desarrolla una aplicación con Spring Boot y React
+- Desarrolla una aplicación con Spring Boot y Vue.js
+- Seguridad JWT en tu API Rest con Spring Boot
+- Mejora la internacionalización de tu aplicación web con Spring Boot
+- Testea tu API REST con Spring Boot
+- Testea la persistencia de tu aplicación con Spring Boot
+- Test Driven Development con Spring Boot
+- Documenta tu API REST con Spring Rest Docs
+- Cómo solucionar los problemas de fetching con Spring Data JPA
+- Mejora tus modelos de datos de Spring Data JPA usando grafos de entidad
+- Consultas con Criteria Query con Spring Data JPA
+- Consultas dinámicas con Spring Data JPA
+- Diferentes tipos de repositorios en Spring Data JPA
+- Customiza tus repositorios con Spring Data JPA
+- Auditoría de datos con Spring Data JPA
+- Cómo invocar procedimientos almacenados con Spring Data JPA
+- Manejo de transacciones con Spring Data JPA
+- Mejora el borrado de entidades con Spring Data JPA
+- Configuración programática del origen de datos con Spring Data JPA
+- Implementa un mecanismo de caché con Spring Boot y Redis
+- Cómo generar tu esquema de base de datos con Spring Data JPA
+- Aprovecha el plugin JPA Buddy de Intellij IDEA en tus proyectos Spring Data JPA
+- Cómo mantener tu esquema de base de datos con Spring Data JPA y Flyway
+- Cómo mantener tu esquema de base de datos con Spring Data JPA y Liquibase
+- Consultas QueryDSL con Spring Data MongoDB
+- Proyecciones y Agregaciones con Spring Data MongoDB
+- Implementa un rate-limit en tu API REST con Spring Boot
+- Mejora tu API REST con Spring Boot aprovechando la librería Jackson
+- Utiliza JSON Views para mejorar las respuestas de tu API REST con Spring Boot
+- Spring Security Reactive
+- Implementa repositorios reactivos con Spring Data R2DBC
+- Implementa repositorios reactivos con Spring Data MongoDB Reactive
+- Implementa rápidamente una API REST con Spring Data REST
+- Cómo enviar un email basado en una plantilla de Thymeleaf con Spring Boot
+- Websockets con Spring Boot
+- Implementa la subida de ficheros a una API REST con Spring Boot y MongoDB
+- Implementa OAuth 2.0 con Spring Security
+- Implementa la autenticación en dos pasos con Spring Boot
+- Mejora la seguridad de tu aplicación Spring Boot 
+- Implementa un mecanismo de Remember me en tu aplicación web con Spring Boot
+- Seguridad a nivel de método en tu aplicación con Spring Boot
+- Utiliza Spring Security en los test de tu aplicación con Spring Boot
+- Implementa un mecanismo de registro protegido por captcha
+- Implementa SSO con Spring Boot y Google
+- Implementa SSO con Spring Boot y GitHub
+- Despliega tu aplicación Spring Boot con Docker
+- Despliega con Docker Compose tu aplicación Spring Boot + Angular + PostgreSQL
+- Externaliza la configuración de tu aplicación con Spring Boot
+- Despliega tu aplicación Spring Boot en AWS EC2
+- Introducción a los microservicios con Spring Cloud
+- Mejora tus microservicios con Spring Cloud usando Resilience4j
+- Incluye seguridad en tus microservicios con Spring Cloud Gateway
+- Conecta tu aplicación Spring Boot con otros microservicios usando OpenFeign
+- Utiliza Apache Kafka con tu aplicación Spring Boot
+- Spring Batch
+- Consultas usando QueryDSL con Spring Data JPA
+- Crea un filtro para tu API REST con Spring Boot
+- Configura varios orígenes de datos diferentes para tu proyecto con Spring Data JPA
+- Utiliza Redis como Message Broker para tus microservicios con Spring Boot
+- Cómo implementar el versionado de tu API REST con Spring Boot
+- Cómo filtrar la salida de tu API REST según el rol de usuario de Spring Security
+- Implementa la seguridad de tu API REST con Spring Security y LDAP
+- Implementa una API Reactiva con Spring WebFlux y R2DBC
+- Implementa una API Reactiva con Spring WebFlux y R2DBC con Kotlin
+- Implementa una API Reactiva con Spring WebFlux y MongoDB
+- Implementa una API Reactiva con Spring WebFlux y MongoDB con Kotlin
+- Implementa una aplicación de chat en tiempo real con Spring Boot y WebSocket
+- Implementa una API REST segura con Spring Boot y Keycloak
+- Implementa la seguridad de tu API REST con Spring Boot, OAuth2 y Keycloak
+- Implementa la seguridad de tu API REST con Spring Boot, OAuth2 y Okta
+- Utiliza SpEL para manejar la seguridad a nivel de método de tu API REST con Spring Boot
+- Autenticación X.509 con Spring Security
+- Ejecuta tu aplicación Spring Boot con imágenes nativas de GraalVM
+- Despliega tus microservicios con Spring Cloud Azure
+- Despliega tus microservicios con Spring Cloud Kubernetes
+- Spring Cloud Stream
+- Spring Cloud Data Flow
+- Spring Cloud Function
+- Creando una aplicación de e-commerce con Spring

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: app1
+data:
+  application.properties: |-
+    bean.message1=Hello1 from ConfigMap
+    bean.message2=Hello2 from ConfigMap

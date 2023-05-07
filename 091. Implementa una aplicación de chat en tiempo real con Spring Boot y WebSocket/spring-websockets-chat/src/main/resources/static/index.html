@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello WebSocket</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+</head>
+<body>
+
+<div class="container text-center">
+
+    <!--    Conectar con el servidor-->
+    <div class="row mt-3">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <button id="connect" class="btn btn-success" type="submit">Connect</button>
+            <button id="disconnect" class="btn btn-danger" type="submit">Disconnect</button>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+
+    <!--    Enviar mensajes al servidor-->
+    <div class="row mt-3">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Escribe tu nickname:</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <button id="join" type="submit" class="btn btn-primary">Unirse al chat</button>
+            </form>
+            <form>
+                <div class="mb-3">
+                    <label for="input" class="form-label">Escribe tu mensaje:</label>
+                    <textarea type="text" cols="70" rows="1" class="form-control" id="input"></textarea><br/>
+                </div>
+                <button id="sendChat" type="submit" class="btn btn-primary">Enviar mensaje</button>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+
+    <!--    Mostrar mensajes recibidos -->
+    <div class="row mt-3">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="mb-3">
+                <label for="textarea" class="form-label">Mensajes recibidos:</label>
+                <textarea type="text" cols="70" rows="1" class="form-control" id="textarea"></textarea><br/>
+            </div>
+            <div class="mb-3">
+                <label for="userlist" class="form-label">Usuarios en la sala:</label>
+                <textarea type="text" cols="70" rows="1" class="form-control" id="userlist"></textarea><br/>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+
+</body>
+</html>

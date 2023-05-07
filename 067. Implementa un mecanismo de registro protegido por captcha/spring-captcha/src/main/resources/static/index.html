@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript"
+          src="webjars/jquery/3.6.1/jquery.min.js"></script>
+
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+
+</head>
+<body>
+<script>
+  $(document).ready(function () {
+    $("#button").click(function () {
+
+      let captchaResponse = grecaptcha.getResponse();
+      let name = $("#name").val();
+      let helloRequest = {
+        'name': name
+      };
+
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json',
+        dataType: "json",
+        headers: {
+          "captcha-response": captchaResponse
+        },
+        data: JSON.stringify(helloRequest),
+        url: "http://www.app.com/hello",
+        success: function (data) {
+          alert(data.message);
+        }
+      });
+    });
+  });
+</script>
+<div>
+  <input type="text" id="name"/>
+  <button type="submit" id="button">Hello</button>
+  </br>
+  <div class="g-recaptcha" data-sitekey="6Lc67RwiAAAAANirujlwym627nWxh2ItEgmg5d3b"></div>
+</div>
+
+
+</body>
+</html>

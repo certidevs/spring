@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tickets</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{navbar :: nav1}"></div>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-1">
+        </div>
+
+        <div class="col-10">
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
+                </div>
+            </div>
+
+            <div>
+                <a class="btn btn-info" th:href="@{/tickets/create}">Crear ticket</a>
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Seat</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Food</th>
+                    <th scope="col">Airport From</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ticket : ${tickets}">
+                    <td th:text="${ticket.id}"></td>
+                    <td>
+                        <img th:src="${#strings.isEmpty(ticket.imageUrl)} ? 'https://dummyimage.com/50' : |/files/${ticket.imageUrl}|" style="max-width: 130px;" alt="Image">
+                    </td>
+                    <td th:text="${ticket.seat}"></td>
+                    <td th:text="|${#numbers.formatDecimal(ticket.price,2,2)} &euro;|"></td>
+                    <td th:text="${ticket.food}"></td>
+                    <td th:if="${ticket.flight}" th:text="${ticket.flight.airportFrom}"></td>
+                    <td th:if="${ticket.flight} == null">Sin vuelo</td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/tickets/{id}(id=${ticket.id})}">Ver</a>
+                        <a class="btn btn-success" th:href="@{/tickets/{id}/edit(id=${ticket.id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{/tickets/{id}/delete(id=${ticket.id})}">Borrar</a>
+
+                        <a class="btn btn-secondary" th:if="${ticket.passenger} == null" th:href="@{/tickets/{id}/buy(id=${ticket.id})}">Comprar</a>
+                        <a class="btn btn-secondary disabled" th:if="${ticket.passenger}" th:href="@{/tickets/{id}/buy(id=${ticket.id})}">Vendido</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(tickets)}">
+                No hay elementos actualmente.
+            </div>
+            <div class="text-center" th:if="${#lists.size(tickets) > 0}">
+                Hay <span th:text="${#lists.size(tickets)}"></span> resultados.
+            </div>
+
+
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

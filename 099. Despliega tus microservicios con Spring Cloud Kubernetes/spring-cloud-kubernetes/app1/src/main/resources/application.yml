@@ -1,0 +1,13 @@
+server.port: 8080
+spring:
+  application.name: app1
+  cloud:
+    kubernetes:
+      config:
+        enabled: true
+        sources:
+          - name: app1
+#      discovery:
+#        enabled: true
+#        service-name: app1
+#        all-namespaces: true

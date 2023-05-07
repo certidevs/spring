@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer details</title>
+</head>
+<body>
+
+<h1>Información de cliente</h1>
+
+Id: <span th:text="${id}"></span><br/>
+Email: <span th:text="${email}"></span><br/>
+Avatar: <img alt="customer avatar" th:src="*{'data:image/png;base64,' + avatar}" width="400"/>
+
+
+</body>
+</html>

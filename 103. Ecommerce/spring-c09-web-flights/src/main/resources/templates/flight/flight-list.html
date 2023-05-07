@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vuelos</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.3/datatables.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<div th:replace="~{navbar :: nav1}"></div>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-1">
+        </div>
+
+        <div class="col-10">
+
+            <div class="text-start">
+                <a class="btn btn-info" th:href="@{/flights/create}">Crear vuelo</a>
+            </div>
+
+            <form class="d-flex mt-3 mb-3" role="search" th:action="@{/flights}" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Airport From" aria-label="Airport From" name="airportFrom" id="airportFrom">
+                <input class="form-control me-2" type="search" placeholder="Airport To" aria-label="Airport To" name="airportTo" id="airportTo">
+                <button class="btn btn-outline-success" type="submit">Filtrar</button>
+            </form>
+
+
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Airport From</th>
+                        <th scope="col">Airport To</th>
+                        <th scope="col">Date Time From</th>
+                        <th scope="col">Date Time To</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="flight : ${flights}">
+                        <td th:text="${flight.id}"></td>
+                        <td th:text="${flight.airportFrom}"></td>
+                        <td th:text="${flight.airportTo}"></td>
+                        <td th:text="${#temporals.format(flight.dateTimeFrom, 'dd/MM/yy HH:mm')}"></td>
+                        <td th:text="${#temporals.format(flight.dateTimeTo, 'dd/MM/yy HH:mm')}"></td>
+                        <td>
+                            <!-- findById http://localhost:8080/flights/1 -->
+                            <a class="btn btn-primary" th:href="@{/flights/{id}(id=${flight.id})}">Ver</a>
+
+                            <!-- showEditForm http://localhost:8080/flights/1/edit -->
+                            <a class="btn btn-success" th:href="@{/flights/{id}/edit(id=${flight.id})}">Editar</a>
+
+                            <!-- deleteById http://localhost:8080/flights/1/delete -->
+                            <a class="btn btn-danger" th:href="@{/flights/{id}/delete(id=${flight.id})}">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(flights)}">
+                No hay elementos actualmente.
+            </div>
+            <div class="text-center" th:if="${#lists.size(flights) > 0}">
+                Hay <span th:text="${#lists.size(flights)}"></span> resultados.
+            </div>
+
+
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.3/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+</body>
+</html>

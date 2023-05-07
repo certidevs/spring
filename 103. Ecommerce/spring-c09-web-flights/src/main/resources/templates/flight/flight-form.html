@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Vuelos</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{navbar :: nav1}"></div>
+<div class="container text-center">
+    <div class="row">
+
+        <h1 th:if="${flight.id}" class="h1-title">Modificar Vuelo <span th:text="${flight.id}"></span></h1>
+        <h1 th:if="${flight.id} == null" class="h1-title">Crear nuevo Vuelo</h1>
+
+        <div class="col"></div>
+
+        <div class="col">
+
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
+                </div>
+                <a type="button" class="btn btn-primary" th:href="@{/flights}">Volver</a>
+            </div>
+
+            <form th:if="${error} == null" th:action="@{/flights}" method="POST" th:object="${flight}">
+
+                <input type="hidden" id="id" name="id" th:field="*{id}"/>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Plane</label>
+                    <input type="text" class="form-control" id="name" th:field="*{plane}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="airportFrom" class="form-label">Airport From</label>
+                    <input type="text" class="form-control" id="airportFrom" th:field="*{airportFrom}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="airportTo" class="form-label">Airport To</label>
+                    <input type="text" class="form-control" id="airportTo" th:field="*{airportTo}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="dateTimeFrom" class="form-label">Date Time From</label>
+                    <input type="datetime-local" class="form-control" id="dateTimeFrom" th:field="*{dateTimeFrom}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="dateTimeTo" class="form-label">Date Time To</label>
+                    <input type="datetime-local" class="form-control" id="dateTimeTo" th:field="*{dateTimeTo}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="seats" class="form-label">Seats</label>
+                    <input type="number" class="form-control" id="seats" th:field="*{seats}">
+                </div>
+
+                <a class="btn btn-danger" th:href="@{/flights}">Cancelar</a>
+                <button type="submit" class="btn btn-success">Guardar</button>
+
+            </form>
+
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

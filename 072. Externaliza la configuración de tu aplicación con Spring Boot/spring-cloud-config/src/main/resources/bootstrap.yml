@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: configserver
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/alansastre/microservices-config
+          username: alansastre
+          #                    password: ${GITHUB_PASSWORD}
+          password: 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
+          default-label: main
+# Crear token github: https://github.com/settings/tokens

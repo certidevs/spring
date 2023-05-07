@@ -1,0 +1,10 @@
+resilience4j.timelimiter:
+  configs:
+    default:
+      cancelRunningFuture: true
+      timeoutDuration: 3s
+    instaces:
+      findAll1:
+        baseConfig: default
+      findAll2:
+        baseConfig: default

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+    <nav th:fragment="nav1" class="navbar navbar-expand-lg bg-light mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/flights">
+                FLIGHTS APP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/flights}">Vuelos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/tickets}">Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/user-tickets}">Mis compras</a>
+                    </li>
+                </ul>
+
+
+                <div class="d-flex" sec:authorize="isAnonymous()">
+                    <a class="btn btn-link" th:href="@{/login}">Iniciar sesión</a>
+                </div>
+                <div class="d-flex" sec:authorize="isAnonymous()">
+                    <a class="btn btn-link" th:href="@{/user/registration}">Registro</a>
+                </div>
+                <div class="d-flex" sec:authorize="isAuthenticated()">
+                    <strong>User: </strong> <span sec:authentication="principal.username"></span>
+                </div>
+
+<!--                <div class="d-flex" sec:authorize="isAuthenticated()">-->
+<!--                    <strong>Balance: </strong><span th:if="${principal.username}" sec:authentication="principal.balance"></span> €-->
+<!--                </div>-->
+
+                <div class="d-flex" sec:authorize="isAuthenticated()">
+                    <a class="btn btn-link" th:href="@{/logout}">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+</body>
+</html>

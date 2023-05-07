@@ -1,0 +1,27 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:14.5
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=spring_db
+    ports:
+      - 5432:5432
+  
+  backend:
+    image: alansastre/backend:1.0
+    container_name: spring-backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+  frontend:
+    image: alansastre/frontend:1.0
+    container_name: spring-frontend
+    ports:
+      - 80:80
+    depends_on:
+      - backend

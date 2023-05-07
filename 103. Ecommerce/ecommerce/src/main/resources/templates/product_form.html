@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Form</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container text-center mt-5">
+    <div class="row">
+        <div class="col-2"></div>
+
+        <div class="col-8">
+
+            <form th:action="@{/products}" method="POST" th:object="${product}" enctype="multipart/form-data">
+                <input type="hidden" id="id" name="id" th:field="*{id}" />
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" th:field="*{name}">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" step="0.01" placeholder="1.00" class="form-control" id="price" th:field="*{price}">
+                </div>
+                <div class="mb-3">
+                    <label for="file" class="form-label">Image</label>
+                    <input type="file" class="form-control" id="file" name="file">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

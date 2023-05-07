@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: microservice1
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+app.message: hola desde archivo local

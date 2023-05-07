@@ -1,0 +1,11 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:14.5
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=spring_r2dbc
+    ports:
+      - 5432:5432

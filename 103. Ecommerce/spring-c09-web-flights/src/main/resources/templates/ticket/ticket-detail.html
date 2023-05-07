@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle Ticket</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{navbar :: nav1}"></div>
+<div class="container text-center">
+    <div class="row">
+
+        <h1 class="h1-title">Detalle ticket</h1>
+        <div class="col"></div>
+
+        <div class="col">
+
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
+                </div>
+                <a class="btn btn-primary" th:href="@{/tickets}">Volver</a>
+            </div>
+
+            <div class="card" th:if="${error} == null">
+                <img th:src="${#strings.isEmpty(ticket.imageUrl)} ? 'https://dummyimage.com/300' : |/files/${ticket.imageUrl}|" class="card-img-top" alt="Food Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="|Ticket ${ticket.id}|"></h5>
+                    <p class="card-text" th:text="| Seat: ${ticket.seat}|"></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:text="|Price: ${ticket.price}|"></li>
+
+                    <li class="list-group-item" th:text="|Food: ${ticket.food}|"></li>
+
+                    <li class="list-group-item" th:if="${ticket.flight}" th:text="|Airport From: ${ticket.flight.airportFrom}|"></li>
+                    <li class="list-group-item" th:if="${ticket.flight}" th:text="|Airport To: ${ticket.flight.airportTo}|"></li>
+
+                </ul>
+
+
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

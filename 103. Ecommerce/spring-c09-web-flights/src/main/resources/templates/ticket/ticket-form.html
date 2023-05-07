@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Ticket</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{navbar :: nav1}"></div>
+<div class="container text-center">
+    <div class="row">
+
+        <h1 th:if="${ticket.id}" class="h1-title">Modificar Ticket <span th:text="${ticket.id}"></span></h1>
+        <h1 th:if="${ticket.id} == null" class="h1-title">Crear nuevo Ticket</h1>
+
+        <div class="col"></div>
+
+        <div class="col">
+
+            <div th:if="${error}">
+                <div class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
+                </div>
+                <a type="button" class="btn btn-primary" th:href="@{/tickets}">Volver</a>
+            </div>
+
+            <form th:if="${error} == null" th:action="@{/tickets}" method="POST" th:object="${ticket}" enctype="multipart/form-data">
+
+                <input type="hidden" id="id" name="id" th:field="*{id}"/>
+
+                <div class="mb-3">
+                    <label for="seat" class="form-label">Seat</label>
+                    <input type="text" class="form-control" id="seat" th:field="*{seat}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price (€)</label>
+                    <input type="number" step="0.01" class="form-control" id="price" th:field="*{price}">
+                </div>
+
+                <div class="form-check mb-3 text-start">
+                    <input class="form-check-input" type="checkbox" id="food" th:field="*{food}">
+                    <label class="form-check-label" for="food">
+                        Food
+                    </label>
+                </div>
+
+                <div class="mb-3">
+                    <select aria-label="flight" class="form-select" th:field="*{flight}">
+                        <option th:if="${ticket.id} == null" selected value="0">Seleccionar vuelo</option>
+                        <option th:each="flight : ${flights}" th:value="${flight.id}" th:text="|${flight.airportFrom} - ${flight.airportTo} - (${#temporals.format(flight.dateTimeFrom, 'dd/MM/yy HH:mm')})|"></option>
+                    </select>
+                </div>
+
+                <input type="hidden" class="form-control" id="passenger" th:field="*{passenger}">
+
+                <img th:if="${ticket.imageUrl}" th:src="|/img/${ticket.imageUrl}|" class="card-img-top" alt="Food Image">
+                <div class="mb-3" th:if="${ticket.imageUrl}">
+                    <label for="imageUrl" class="form-label">Imagen Url</label>
+                    <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label for="file" class="form-label">Imagen</label>
+                    <input class="form-control" type="file" id="file" name="file">
+                </div>
+
+
+
+                <a class="btn btn-danger" th:href="@{/tickets}">Cancelar</a>
+                <button type="submit" class="btn btn-success">Guardar</button>
+
+            </form>
+
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

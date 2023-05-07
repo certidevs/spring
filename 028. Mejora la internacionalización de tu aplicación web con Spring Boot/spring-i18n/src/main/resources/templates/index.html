@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf app</title>
+</head>
+<body>
+<h1 data-th-text="#{home.welcome}"></h1>
+<h2 data-th-text="#{home.info}"></h2>
+<p data-th-text="#{home.changelanguage}"></p>
+<ul>
+    <li><a href="?lang=en" data-th-text="#{home.lang.en}"></a></li>
+    <li><a href="?lang=es" data-th-text="#{home.lang.es}"></a></li>
+</ul>
+</body>
+</html>

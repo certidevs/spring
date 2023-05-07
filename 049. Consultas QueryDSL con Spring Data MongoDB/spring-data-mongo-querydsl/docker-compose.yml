@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  my-mongo-db:
+    container_name: mongo-querydsl
+    image: mongo:5.0.6
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: admin

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1662458330033-1" author="alanj (generated)">
+        <createTable tableName="customer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_customer"/>
+            </column>
+            <column name="full_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="version" type="BIGINT"/>
+            <column name="title" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1662458330033-2" author="alanj (generated)">
+        <createTable tableName="customer_phones">
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1662458330033-3" author="alanj (generated)">
+        <createIndex indexName="idx_customer_full_name_title" tableName="customer">
+            <column name="full_name"/>
+            <column name="title"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1662458330033-4" author="alanj (generated)">
+        <createIndex indexName="idx_customer_type" tableName="customer">
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1662458330033-5" author="alanj (generated)">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="customer_phones"
+                                 constraintName="fk_customer_phones_on_customer" referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+    </changeSet>
+    <changeSet id="1662458330033-6" author="alanj (generated)">
+        <dropForeignKeyConstraint baseTableName="book" constraintName="FKklnrv3weler2ftkweewlky958"/>
+    </changeSet>
+    <changeSet id="1662458330033-7" author="alanj (generated)">
+        <dropForeignKeyConstraint baseTableName="companies_creditcards" constraintName="FKnx94no3gd0v70e24e361h8yom"/>
+    </changeSet>
+    <changeSet id="1662458330033-8" author="alanj (generated)">
+        <dropForeignKeyConstraint baseTableName="companies_creditcards" constraintName="FKscdlt0hcmuaswirqgl1wg563"/>
+    </changeSet>
+    <changeSet id="1662458330033-10" author="alanj (generated)">
+        <dropTable cascadeConstraints="true" tableName="book"/>
+    </changeSet>
+    <changeSet id="1662458330033-11" author="alanj (generated)">
+        <dropTable cascadeConstraints="true" tableName="companies"/>
+    </changeSet>
+    <changeSet id="1662458330033-12" author="alanj (generated)">
+        <dropTable cascadeConstraints="true" tableName="companies_creditcards"/>
+    </changeSet>
+    <changeSet id="1662458330033-13" author="alanj (generated)">
+        <dropTable cascadeConstraints="true" tableName="credit_cards"/>
+    </changeSet>
+    <changeSet id="1662458330033-14" author="alanj (generated)">
+        <dropColumn columnName="name" tableName="author"/>
+    </changeSet>
+
+</databaseChangeLog>

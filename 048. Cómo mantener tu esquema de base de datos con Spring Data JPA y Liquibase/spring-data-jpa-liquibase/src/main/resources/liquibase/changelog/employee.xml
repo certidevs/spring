@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+<!--    <property name="autoIncrement" value="true"/>-->
+
+    <changeSet id="1" author="alansastre">
+        <createTable tableName="employee">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="phone" type="varchar(255)"/>
+        </createTable>
+        <loadData tableName="employee" file="liquibase/data/employees.csv"
+                  separator=";">
+            <column name="name" type="varchar"/>
+            <column name="email" type="varchar"/>
+            <column name="phone" type="varchar"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="2" author="alansastre">
+        <addColumn tableName="employee">
+            <column name="city" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="alansastre">
+        <addColumn tableName="employee">
+            <column name="country" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="tag_version_0_1_0" author="alansastre">
+        <tagDatabase tag="version_0.1.0"/>
+    </changeSet>
+
+    <changeSet id="4" author="alansastre">
+        <addColumn tableName="employee">
+            <column name="state" type="varchar(2)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="tag_version_0_2_0" author="alansastre">
+        <tagDatabase tag="version_0.2.0"/>
+    </changeSet>
+</databaseChangeLog>

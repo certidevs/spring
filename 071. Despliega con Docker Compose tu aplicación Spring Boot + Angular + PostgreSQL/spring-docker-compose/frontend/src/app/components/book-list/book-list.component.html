@@ -1,0 +1,15 @@
+<div class="list row">
+
+  <div class="col-md-6">
+    <h4>Book List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let book of books; let i = index"
+      >
+        {{ book.id }} - {{ book.title }}
+      </li>
+    </ul>
+
+  </div>
+</div>

@@ -1,0 +1,75 @@
+# create the service account
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: api-reader
+  namespace: default
+---
+# create the role to grant access to configmaps
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: role-api-reader
+rules:
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["pods","configmaps", "services", "endpoints", "namespaces"]
+    verbs: ["get", "watch", "list", "update", "patch", "delete", "create"]
+---
+# bind the role and the service account
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rolebinding-api-reader
+  namespace: default
+subjects:
+  - kind: ServiceAccount
+    name: api-reader # Name is case sensitive
+    namespace: default
+roleRef:
+  kind: Role #this must be Role or ClusterRole
+  name: role-api-reader # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      serviceAccountName: api-reader  # here is the key point
+      containers:
+        - name: app1
+          image: alansastre/app1:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
+            - name: env.namespace
+              value: default
+          imagePullPolicy: Always
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: app1
+spec:
+  selector:
+    app: app1
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30082
+  type: NodePort
